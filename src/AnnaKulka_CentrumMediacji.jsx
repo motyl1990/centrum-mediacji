@@ -346,21 +346,21 @@ export default function App() {
           </div>
 
           <div className="hero-image" style={{ animation: "fadeUp 1s ease 0.3s both" }}>
-            <div style={{
-              width: "clamp(260px, 35vw, 420px)",
-              aspectRatio: "4/5",
-              background: "linear-gradient(145deg, #dce8f8, #b8cef0)",
-              position: "relative",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>
-              <div style={{ position: "absolute", inset: -12, border: "1px solid #aac4e8", zIndex: -1 }} />
-              <div style={{ textAlign: "center", padding: 40 }}>
-                <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "4rem", color: "#0d1e3d", opacity: 0.15, lineHeight: 1 }}>AK</div>
-                <div style={{ width: 48, height: 1, background: "#2a5caa", margin: "16px auto" }} />
-                <p style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.1rem", color: "#0d1e3d", fontStyle: "italic", opacity: 0.7 }}>
-                  "Mediacja to rozmowa,<br />która zmienia wszystko."
-                </p>
-              </div>
+            <div style={{ position: "relative" }}>
+              <div style={{ position: "absolute", inset: -12, border: "1px solid #aac4e8", zIndex: 0 }} />
+              <img
+                src="/foto.jpg"
+                alt="Anna Kulka – mediator"
+                style={{
+                  width: "clamp(260px, 35vw, 420px)",
+                  aspectRatio: "4/5",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  display: "block",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              />
             </div>
           </div>
         </div>
