@@ -36,6 +36,8 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -66,9 +68,30 @@ export default function App() {
     setMenuOpen(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSent(true);
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.message) return;
+    setSending(true);
+    setFormError(false);
+    try {
+      const res = await fetch("https://formspree.io/f/xvzdwadp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setFormError(true);
+      }
+    } catch {
+      setFormError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -401,14 +424,7 @@ export default function App() {
             <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a5e80", marginBottom: 32, fontWeight: 300 }}>
               Jestem magistrem psychologii i pedagogiki. Jako mama nastolatka dobrze rozumiem realne wyzwania wychowawcze i rodzinne — co pozwala mi prowadzić mediacje z empatią, spokojem i praktycznym podejściem.
             </p>
-            <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
-              {[["Mediator", "Wpisana na listę MŚ"], ["Psycholog", "Mgr psychologii i pedagogiki"], ["Szkoła", "Wieloletnia praktyka"]].map(([t, s]) => (
-                <div key={t}>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 500, color: "#0d1e3d", marginBottom: 2 }}>{t}</div>
-                  <div style={{ fontSize: "0.75rem", color: "#7a90b0" }}>{s}</div>
-                </div>
-              ))}
-            </div>
+
           </FadeIn>
         </div>
       </section>
@@ -465,8 +481,8 @@ export default function App() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
             {[
               { title: "Konsultacja wstępna", price: "Bezpłatna", unit: "30 minut online", features: ["Omówienie sprawy", "Ocena możliwości mediacji", "Odpowiedzi na pytania"], featured: false, cta: "Umów spotkanie" },
-              { title: "Mediacja sądowa", price: "Zgodnie z przepisami", unit: "rozporządzenia Ministra Sprawiedliwości", features: ["Protokół z posiedzenia", "Projekt ugody w cenie", "Możliwość zatwierdzenia przez sąd"], featured: true, cta: "Zapytaj o szczegóły" },
-              { title: "Mediacja prywatna", price: "Wycena indywidualna", unit: "zależna od rodzaju i złożoności sprawy", features: ["Pełna poufność", "Elastyczne terminy", "Online lub stacjonarnie", "Umowa o mediację"], featured: false, cta: "Zapytaj o wycenę" },
+              { title: "Mediacja pozasądowa", price: "Wycena indywidualna", unit: "zależna od rodzaju i złożoności sprawy", features: ["Pełna poufność", "Elastyczne terminy", "Online lub stacjonarnie", "Ugoda zatwierdzana przez sąd – opcjonalnie"], featured: true, cta: "Zapytaj o wycenę" },
+              { title: "Mediacja sądowa", price: "Zgodnie z przepisami", unit: "rozporządzenia Ministra Sprawiedliwości", features: ["Protokół z posiedzenia", "Projekt ugody w cenie", "Możliwość zatwierdzenia przez sąd"], featured: false, cta: "Zapytaj o szczegóły" },
             ].map((p, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className={`price-card${p.featured ? " featured" : ""}`}>
@@ -589,8 +605,13 @@ export default function App() {
                 <p style={{ fontSize: "0.75rem", color: "#9aaac0", fontWeight: 300 }}>
                   Twoje dane są bezpieczne. Pełna poufność zgodna z ustawą o mediacji.
                 </p>
-                <button className="btn-primary" onClick={handleSubmit} style={{ width: "100%", padding: 16 }}>
-                  Wyślij wiadomość
+                {formError && (
+                  <p style={{ fontSize: "0.82rem", color: "#c0392b", fontWeight: 300 }}>
+                    Wystąpił błąd. Spróbuj ponownie lub napisz bezpośrednio na mediacje.ugoda@wp.pl
+                  </p>
+                )}
+                <button className="btn-primary" onClick={handleSubmit} disabled={sending} style={{ width: "100%", padding: 16, opacity: sending ? 0.7 : 1 }}>
+                  {sending ? "Wysyłanie..." : "Wyślij wiadomość"}
                 </button>
               </div>
             )}
