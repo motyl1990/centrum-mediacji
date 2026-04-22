@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const NAV_LINKS = [
   { label: "O mnie", href: "#o-mnie" },
+  { label: "Mediacja", href: "#mediacja" },
   { label: "Usługi", href: "#uslugi" },
   { label: "Cennik", href: "#cennik" },
   { label: "Kontakt", href: "#kontakt" },
@@ -429,6 +430,178 @@ export default function App() {
         </div>
       </section>
 
+
+      {/* MEDIACJA */}
+      <section id="mediacja" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+
+          {/* Intro */}
+          <FadeIn>
+            <div style={{ textAlign: "center", marginBottom: 72 }}>
+              <span className="section-label">O mediacji</span>
+              <div className="divider-line" style={{ margin: "0 auto 24px" }} />
+              <h2 className="section-title" style={{ marginBottom: 24 }}>Na czym polega mediacja?</h2>
+              <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300, maxWidth: 740, margin: "0 auto 16px" }}>
+                Tradycyjny proces sądowy ma jeden główny cel – rozstrzygnięcie sporu. Mediacja działa inaczej. Jej zadaniem jest nie tylko zakończenie konfliktu, ale przede wszystkim znalezienie rozwiązania, które będzie możliwe do zaakceptowania przez obie strony.
+              </p>
+              <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300, maxWidth: 740, margin: "0 auto 16px" }}>
+                Mediacja daje uczestnikom przestrzeń do spokojnej rozmowy, wzajemnego wysłuchania się oraz zrozumienia swoich potrzeb. W mediacji szczególnie ważne jest spojrzenie w przyszłość — strony często pozostają ze sobą w relacjach rodzinnych, zawodowych czy biznesowych.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* 5 kroków */}
+          <FadeIn>
+            <div style={{ marginBottom: 80 }}>
+              <div style={{ textAlign: "center", marginBottom: 48 }}>
+                <span className="section-label">Przebieg procesu</span>
+                <div className="divider-line" style={{ margin: "0 auto 24px" }} />
+                <h3 className="section-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>Jak wygląda mediacja?</h3>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 0, maxWidth: 800, margin: "0 auto" }}>
+                {[
+                  { n: "01", title: "Kontakt", desc: "Jedna ze stron zgłasza chęć mediacji. Kontaktuję się z drugą stroną i przedstawiam zasady." },
+                  { n: "02", title: "Zgoda i ustalenia formalne", desc: "Ustalenie terminu spotkania i podpisanie umowy mediacyjnej." },
+                  { n: "03", title: "Spotkania mediacyjne", desc: "Rozmowa w bezpiecznych warunkach, identyfikacja problemów i poszukiwanie rozwiązań." },
+                  { n: "04", title: "Wypracowanie porozumienia", desc: "Jeśli strony osiągną zgodę, sporządzana jest ugoda mediacyjna." },
+                  { n: "05", title: "Zatwierdzenie przez sąd (opcjonalnie)", desc: "W mediacji sądowej ugoda może zostać przekazana do zatwierdzenia i uzyskać moc prawną wyroku." },
+                ].map((step, i) => (
+                  <div key={i} style={{ display: "flex", gap: 32, alignItems: "flex-start", padding: "28px 0", borderBottom: i < 4 ? "1px solid #e8eef8" : "none" }}>
+                    <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "2.2rem", fontWeight: 600, color: "#e0e8f5", lineHeight: 1, flexShrink: 0, width: 56 }}>{step.n}</div>
+                    <div>
+                      <div style={{ fontSize: "1rem", fontWeight: 500, color: "#0d1e3d", marginBottom: 6 }}>{step.title}</div>
+                      <div style={{ fontSize: "0.9rem", color: "#5a6e8a", lineHeight: 1.7, fontWeight: 300 }}>{step.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Rola mediatora + Zasady */}
+          <div className="grid-two-col" style={{ marginBottom: 80 }}>
+            <FadeIn>
+              <span className="section-label">Rola mediatora</span>
+              <div className="divider-line" />
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300, marginBottom: 16 }}>
+                Mediator to bezstronna osoba trzecia — specjalista posiadający odpowiednie przygotowanie oraz kompetencje społeczne, który pomaga stronom w prowadzeniu rozmowy i poszukiwaniu porozumienia.
+              </p>
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300, marginBottom: 16 }}>
+                Mediator nie rozstrzyga sporu, nie wskazuje kto ma rację i nie narzuca gotowych rozwiązań. Jego zadaniem jest stworzenie bezpiecznej przestrzeni, w której strony mogą skupić się na poszukiwaniu porozumienia.
+              </p>
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300 }}>
+                Gdy strony nie mają jeszcze jasno określonych oczekiwań, mediator pomaga uporządkować kwestie sporne oraz zidentyfikować potrzeby i interesy uczestników.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <span className="section-label">Zasady mediacji</span>
+              <div className="divider-line" />
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {[
+                  { t: "Bezstronność", d: "Mediator nie opowiada się po żadnej ze stron." },
+                  { t: "Neutralność", d: "Mediator nie ocenia proponowanych rozwiązań i nie narzuca własnych pomysłów." },
+                  { t: "Dobrowolność", d: "Udział w mediacji jest dobrowolny, a strony mogą w każdej chwili z niej zrezygnować." },
+                  { t: "Akceptowalność", d: "Mediator prowadzi mediację wyłącznie za zgodą obu stron." },
+                  { t: "Poufność", d: "Wszystkie rozmowy prowadzone podczas mediacji pozostają poufne." },
+                ].map((z, i) => (
+                  <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                    <span style={{ color: "#2a5caa", flexShrink: 0, marginTop: 2 }}>—</span>
+                    <div>
+                      <span style={{ fontSize: "0.88rem", fontWeight: 500, color: "#0d1e3d" }}>{z.t} </span>
+                      <span style={{ fontSize: "0.88rem", color: "#5a6e8a", fontWeight: 300 }}>{z.d}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Tabela porównawcza */}
+          <FadeIn>
+            <div style={{ marginBottom: 80 }}>
+              <div style={{ textAlign: "center", marginBottom: 40 }}>
+                <span className="section-label">Porównanie</span>
+                <div className="divider-line" style={{ margin: "0 auto 24px" }} />
+                <h3 className="section-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>Dlaczego warto wybrać mediację?</h3>
+              </div>
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }}>
+                  <thead>
+                    <tr>
+                      <th style={{ padding: "14px 20px", textAlign: "left", fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#fff", background: "#0d1e3d", fontWeight: 400 }}>Kryterium</th>
+                      <th style={{ padding: "14px 20px", textAlign: "center", fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#fff", background: "#2a5caa", fontWeight: 400 }}>Mediacja</th>
+                      <th style={{ padding: "14px 20px", textAlign: "center", fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#7a90b0", background: "#f0f5ff", fontWeight: 400 }}>Proces sądowy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["Czas trwania", "kilka spotkań", "często kilka lat"],
+                      ["Koszty", "niższe", "wysokie opłaty sądowe"],
+                      ["Poufność", "pełna poufność", "jawność rozpraw"],
+                      ["Decyzyjność", "strony decydują", "decyzja sędziego"],
+                      ["Relacje", "szansa na zachowanie relacji", "eskalacja konfliktu"],
+                    ].map(([k, m, s], i) => (
+                      <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#f8fafd" }}>
+                        <td style={{ padding: "14px 20px", color: "#0d1e3d", fontWeight: 400, borderBottom: "1px solid #e8eef8" }}>{k}</td>
+                        <td style={{ padding: "14px 20px", textAlign: "center", color: "#2a5caa", fontWeight: 500, borderBottom: "1px solid #e8eef8" }}>✓ {m}</td>
+                        <td style={{ padding: "14px 20px", textAlign: "center", color: "#9aaac0", fontWeight: 300, borderBottom: "1px solid #e8eef8" }}>{s}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </FadeIn>
+
+
+          {/* Czy mediacja się opłaca */}
+          <FadeIn>
+            <div style={{ marginBottom: 80 }}>
+              <div style={{ textAlign: "center", marginBottom: 48 }}>
+                <span className="section-label">Perspektywa</span>
+                <div className="divider-line" style={{ margin: "0 auto 24px" }} />
+                <h3 className="section-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>Czy mediacja się opłaca?</h3>
+              </div>
+              <div className="grid-two-col" style={{ alignItems: "start" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300 }}>
+                    Postępowania sądowe potrafią trwać miesiącami, a niekiedy latami. W tym czasie konflikt pochłania nie tylko pieniądze, ale również czas, energię i emocje stron. Spory, które w sądzie mogłyby ciągnąć się bardzo długo, w mediacji często udaje się zakończyć w ciągu kilku spotkań.
+                  </p>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300 }}>
+                    Warto też pamiętać, że mediacja to instytucja w pełni uregulowana przez prawo — nie jest nieformalnym spotkaniem. Ugoda zawarta w mediacji, po zatwierdzeniu przez sąd, ma taką samą moc prawną jak wyrok i może stanowić podstawę egzekucji, jeżeli jedna ze stron nie będzie przestrzegała przyjętych ustaleń.
+                  </p>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300 }}>
+                    Porozumienia wypracowane wspólnie są częściej realizowane dobrowolnie — strony same uczestniczyły w ich tworzeniu i czują się za nie odpowiedzialne.
+                  </p>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  <div style={{ background: "#0d1e3d", padding: "36px 32px" }}>
+                    <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.5rem", color: "#dde8f8", lineHeight: 1.4, marginBottom: 16, fontStyle: "italic" }}>
+                      "W postępowaniu sądowym jedna strona wygrywa, a druga przegrywa. W mediacji celem jest znalezienie rozwiązania, które pozwoli obu stronom zakończyć konflikt i iść dalej."
+                    </div>
+                    <div style={{ width: 28, height: 1, background: "#2a5caa", marginBottom: 12 }} />
+                    <div style={{ fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#5a78a0" }}>Anna Kulka</div>
+                  </div>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#4a5e80", fontWeight: 300 }}>
+                    Mediacja pozwala zamknąć spór nie tylko formalnie, ale także emocjonalnie. Zamiast koncentrować się na wskazywaniu winnych, strony mogą skupić się na znalezieniu wyjścia z trudnej sytuacji — co w wielu przypadkach okazuje się rozwiązaniem korzystnym nie tylko finansowo, ale również życiowo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+          {/* CTA */}
+          <FadeIn>
+            <div style={{ textAlign: "center", background: "#f0f5ff", padding: "48px 40px", border: "1px solid #e0e8f5" }}>
+              <h3 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", color: "#0d1e3d", marginBottom: 16 }}>Masz pytania?</h3>
+              <p style={{ fontSize: "0.95rem", color: "#4a5e80", fontWeight: 300, lineHeight: 1.8, marginBottom: 28, maxWidth: 520, margin: "0 auto 28px" }}>
+                Jeżeli zastanawiasz się, czy Twoja sprawa nadaje się do mediacji, zapraszam do kontaktu. Chętnie wyjaśnię, jak wygląda proces i czy może być odpowiednim rozwiązaniem w Twojej sytuacji.
+              </p>
+              <a href="#kontakt" onClick={e => scrollToSection(e, "#kontakt")} className="btn-primary">Skontaktuj się</a>
+            </div>
+          </FadeIn>
+
+        </div>
+      </section>
       {/* USŁUGI */}
       <section id="uslugi" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -482,7 +655,7 @@ export default function App() {
             {[
               { title: "Konsultacja wstępna", price: "Bezpłatna", unit: "30 minut online", features: ["Omówienie sprawy", "Ocena możliwości mediacji", "Odpowiedzi na pytania"], featured: false, cta: "Umów spotkanie" },
               { title: "Mediacja pozasądowa", price: "Wycena indywidualna", unit: "zależna od rodzaju i złożoności sprawy", features: ["Pełna poufność", "Elastyczne terminy", "Online lub stacjonarnie", "Ugoda zatwierdzana przez sąd – opcjonalnie"], featured: true, cta: "Zapytaj o wycenę" },
-              { title: "Mediacja sądowa", price: "Zgodnie z przepisami", unit: "rozporządzenia Ministra Sprawiedliwości", features: ["Protokół z posiedzenia", "Projekt ugody w cenie", "Możliwość zatwierdzenia przez sąd"], featured: false, cta: "Zapytaj o szczegóły" },
+              { title: "Mediacja sądowa", price: "Zgodnie z przepisami", unit: "rozporządzenia Ministra Sprawiedliwości", features: ["Sąd wyznacza mediatora z listy stałych mediatorów", "Ustawowo ustalony termin realizacji", "Ustawowo ustalone koszty postępowania"], featured: false, cta: "Zapytaj o szczegóły" },
             ].map((p, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className={`price-card${p.featured ? " featured" : ""}`}>
@@ -519,6 +692,44 @@ export default function App() {
         </div>
       </section>
 
+
+      {/* OPINIE */}
+      <section style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <FadeIn>
+            <div style={{ textAlign: "center", marginBottom: 64 }}>
+              <span className="section-label">Opinie klientów</span>
+              <div className="divider-line" style={{ margin: "0 auto 24px" }} />
+              <h2 className="section-title">Co mówią o współpracy</h2>
+            </div>
+          </FadeIn>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+            {[
+              {
+                quote: "Byłam sceptyczna wobec mediacji, ale Pani Anna od pierwszej chwili wzbudziła zaufanie. Dzięki jej spokojowi i profesjonalizmowi udało nam się z mężem wypracować porozumienie, którego sąd nie byłby w stanie nam dać.",
+                author: "Klientka, mediacja rodzinna",
+              },
+              {
+                quote: "Spór z sąsiadem ciągnął się latami. Po dwóch spotkaniach mediacyjnych mamy podpisaną ugodę. Pani Anna potrafi słuchać obu stron bez oceniania — to rzadka umiejętność.",
+                author: "Klient, mediacja sąsiedzka",
+              },
+              {
+                quote: "Polecam każdemu, kto stoi przed trudnym konfliktem w pracy. Mediacja z Panią Anną to rozmowa prowadzona z ogromną kulturą i empatią. Wyszłam z poczuciem, że zostałam naprawdę wysłuchana.",
+                author: "Klientka, mediacja pracownicza",
+              },
+            ].map((t, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div style={{ background: "#fff", border: "1px solid #e0e8f5", padding: "36px 32px", position: "relative" }}>
+                  <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "3rem", color: "#2a5caa", lineHeight: 0.8, marginBottom: 20, opacity: 0.4 }}>"</div>
+                  <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#4a5e80", fontWeight: 300, marginBottom: 24, fontStyle: "italic" }}>{t.quote}</p>
+                  <div style={{ width: 28, height: 1, background: "#2a5caa", marginBottom: 12 }} />
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#2a5caa" }}>{t.author}</div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* CYTAT */}
       <section style={{ background: "#0d1e3d", padding: "80px clamp(24px, 5vw, 80px)", textAlign: "center" }}>
         <FadeIn>
