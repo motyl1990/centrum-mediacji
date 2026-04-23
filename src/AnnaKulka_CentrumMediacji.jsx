@@ -466,7 +466,7 @@ export default function App() {
                   { n: "02", title: "Zgoda i ustalenia formalne", desc: "Ustalenie terminu spotkania i podpisanie umowy mediacyjnej." },
                   { n: "03", title: "Spotkania mediacyjne", desc: "Rozmowa w bezpiecznych warunkach, identyfikacja problemów i poszukiwanie rozwiązań." },
                   { n: "04", title: "Wypracowanie porozumienia", desc: "Jeśli strony osiągną zgodę, sporządzana jest ugoda mediacyjna." },
-                  { n: "05", title: "Zatwierdzenie przez sąd (opcjonalnie)", desc: "W mediacji sądowej ugoda może zostać przekazana do zatwierdzenia i uzyskać moc prawną wyroku." },
+                  { n: "05", title: "Zatwierdzenie przez sąd (opcjonalnie)", desc: "W umownej (pozasądowej) ugoda może zostać przekazana przeze mnie do zatwierdzenia przez sąd i uzyskać moc prawną wyroku." },
                 ].map((step, i) => (
                   <div key={i} style={{ display: "flex", gap: 32, alignItems: "flex-start", padding: "28px 0", borderBottom: i < 4 ? "1px solid #e8eef8" : "none" }}>
                     <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "2.2rem", fontWeight: 600, color: "#e0e8f5", lineHeight: 1, flexShrink: 0, width: 56 }}>{step.n}</div>
