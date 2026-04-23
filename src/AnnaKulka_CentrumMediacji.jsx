@@ -394,19 +394,21 @@ export default function App() {
       <section id="o-mnie" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div className="grid-two-col" style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeIn>
-            <div style={{
-              aspectRatio: "1/1.1",
-              background: "linear-gradient(135deg, #e8f0fb 0%, #d0e2f8 100%)",
-              position: "relative",
-              maxWidth: 420,
-            }}>
+            <div style={{ position: "relative", maxWidth: 420 }}>
               <div style={{ position: "absolute", bottom: -16, right: -16, width: "70%", height: "70%", background: "#f0f5ff", zIndex: -1 }} />
-              <div style={{ padding: 48, height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-                <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1rem", color: "#2a5caa", fontStyle: "italic", marginBottom: 12 }}>
-                  Mediator · Psycholog · Pedagog
-                </div>
-                <div style={{ width: 36, height: 1, background: "#2a5caa" }} />
-              </div>
+              <img
+                src="/Obrazek.png"
+                alt="Anna Kulka – mediator, psycholog"
+                style={{
+                  width: "100%",
+                  aspectRatio: "1/1.1",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  display: "block",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              />
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
