@@ -39,6 +39,7 @@ export default function App() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState(false);
+  const [activeTab, setActiveTab] = useState("umowne");
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -272,7 +273,6 @@ export default function App() {
             padding-bottom: 64px !important;
           }
         }
-
         @media (min-width: 769px) {
           .mobile-toggle { display: none !important; }
           .mobile-menu-overlay { display: none !important; }
@@ -280,7 +280,7 @@ export default function App() {
 
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(28px); }
-          to   { opacity: 1; transform: translateY(0); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
 
@@ -368,7 +368,6 @@ export default function App() {
               <a href="#uslugi" onClick={e => scrollToSection(e, "#uslugi")} className="btn-outline">Dowiedz się więcej</a>
             </div>
           </div>
-
           <div className="hero-image" style={{ animation: "fadeUp 1s ease 0.3s both" }}>
             <div style={{ position: "relative" }}>
               <div style={{ position: "absolute", inset: -12, border: "1px solid #aac4e8", zIndex: 0 }} />
@@ -427,17 +426,13 @@ export default function App() {
             <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#4a5e80", marginBottom: 32, fontWeight: 300 }}>
               Jestem magistrem psychologii i pedagogiki. Jako mama nastolatka dobrze rozumiem realne wyzwania wychowawcze i rodzinne — co pozwala mi prowadzić mediacje z empatią, spokojem i praktycznym podejściem.
             </p>
-
           </FadeIn>
         </div>
       </section>
 
-
       {/* MEDIACJA */}
       <section id="mediacja" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-
-          {/* Intro */}
           <FadeIn>
             <div style={{ textAlign: "center", marginBottom: 72 }}>
               <span className="section-label">O mediacji</span>
@@ -452,7 +447,6 @@ export default function App() {
             </div>
           </FadeIn>
 
-          {/* 5 kroków */}
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -480,7 +474,6 @@ export default function App() {
             </div>
           </FadeIn>
 
-          {/* Rola mediatora + Zasady */}
           <div className="grid-two-col" style={{ marginBottom: 80 }}>
             <FadeIn>
               <span className="section-label">Rola mediatora</span>
@@ -518,7 +511,6 @@ export default function App() {
             </FadeIn>
           </div>
 
-          {/* Tabela porównawcza */}
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -555,8 +547,6 @@ export default function App() {
             </div>
           </FadeIn>
 
-
-          {/* Czy mediacja się opłaca */}
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -591,7 +581,7 @@ export default function App() {
               </div>
             </div>
           </FadeIn>
-          {/* CTA */}
+
           <FadeIn>
             <div style={{ textAlign: "center", background: "#f0f5ff", padding: "48px 40px", border: "1px solid #e0e8f5" }}>
               <h3 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", color: "#0d1e3d", marginBottom: 16 }}>Masz pytania?</h3>
@@ -601,9 +591,9 @@ export default function App() {
               <a href="#kontakt" onClick={e => scrollToSection(e, "#kontakt")} className="btn-primary">Skontaktuj się</a>
             </div>
           </FadeIn>
-
         </div>
       </section>
+
       {/* USŁUGI */}
       <section id="uslugi" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -646,54 +636,291 @@ export default function App() {
       <section id="cennik" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeIn>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <div style={{ textAlign: "center", marginBottom: 56 }}>
               <span className="section-label">Cennik</span>
               <div className="divider-line" style={{ margin: "0 auto 24px" }} />
               <h2 className="section-title">Przejrzyste warunki</h2>
-              <p style={{ fontSize: "0.95rem", color: "#7a90b0", marginTop: 16, fontWeight: 300 }}>Każda sprawa jest wyceniana indywidualnie. Poniżej orientacyjne stawki.</p>
+              <p style={{ fontSize: "0.95rem", color: "#7a90b0", marginTop: 16, fontWeight: 300, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
+                Stawki dla mediacji umownych oraz dla mediacji prowadzonych ze skierowania sądu.
+              </p>
             </div>
           </FadeIn>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
-            {[
-              { title: "Konsultacja wstępna", price: "Bezpłatna", unit: "30 minut online", features: ["Omówienie sprawy", "Ocena możliwości mediacji", "Odpowiedzi na pytania"], featured: false, cta: "Umów spotkanie" },
-              { title: "Mediacja pozasądowa", price: "Wycena indywidualna", unit: "zależna od rodzaju i złożoności sprawy", features: ["Pełna poufność", "Elastyczne terminy", "Online lub stacjonarnie", "Ugoda zatwierdzana przez sąd – opcjonalnie"], featured: true, cta: "Zapytaj o wycenę" },
-              { title: "Mediacja sądowa", price: "Zgodnie z przepisami", unit: "rozporządzenia Ministra Sprawiedliwości", features: ["Sąd wyznacza mediatora z listy stałych mediatorów", "Ustawowo ustalony termin realizacji", "Ustawowo ustalone koszty postępowania"], featured: false, cta: "Zapytaj o szczegóły" },
-            ].map((p, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className={`price-card${p.featured ? " featured" : ""}`}>
-                  {p.featured && (
-                    <div style={{ position: "absolute", top: -1, right: 24, background: "#2a5caa", color: "#fff", fontSize: "0.7rem", letterSpacing: "0.14em", padding: "4px 12px", textTransform: "uppercase" }}>
-                      Najczęściej wybierana
+
+          <FadeIn delay={0.1}>
+            <div style={{
+              display: "flex", justifyContent: "center", gap: 0,
+              marginBottom: 56, borderBottom: "1px solid #e0e8f5",
+              flexWrap: "wrap",
+            }}>
+              {[
+                { id: "umowne", label: "Mediacje umowne" },
+                { id: "sadowe", label: "Mediacje sądowe" },
+              ].map(t => (
+                <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
+                  padding: "16px 32px",
+                  background: "transparent",
+                  border: "none",
+                  borderBottom: activeTab === t.id ? "2px solid #2a5caa" : "2px solid transparent",
+                  color: activeTab === t.id ? "#0d1e3d" : "#7a90b0",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  marginBottom: -1,
+                  transition: "all 0.3s",
+                  fontWeight: activeTab === t.id ? 500 : 400,
+                }}>
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </FadeIn>
+
+          {activeTab === "umowne" && (
+            <FadeIn>
+              <p style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px", fontSize: "0.95rem", lineHeight: 1.8, color: "#4a5e80", fontWeight: 300 }}>
+                Koszty mediacji umownych ustalane są w zależności od rodzaju i stopnia skomplikowania sprawy, liczby spotkań oraz uczestników. Co do zasady strony ponoszą koszty po połowie — możliwe jest również uregulowanie ich w całości przez jedną ze stron.
+              </p>
+
+              <div style={{
+                background: "#f6f9ff", padding: "32px 40px", marginBottom: 32,
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                gap: 32, flexWrap: "wrap", border: "1px solid #e0e8f5",
+              }}>
+                <div style={{ flex: "1 1 300px" }}>
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 10 }}>
+                    Opłata wstępna
+                  </div>
+                  <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.7, fontWeight: 300 }}>
+                    Pobierana niezależnie od rodzaju sprawy. Obejmuje koszty administracyjne, konsultację telefoniczną do 30 minut, ocenę czy sprawa nadaje się do mediacji oraz przygotowanie umowy o mediację.
+                  </p>
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "2.6rem", fontWeight: 600, color: "#0d1e3d", lineHeight: 1 }}>
+                  200 zł
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24, marginBottom: 40 }}>
+                <div className="price-card">
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
+                    Sprawy niemajątkowe
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "2.2rem", fontWeight: 600, color: "#0d1e3d", lineHeight: 1.2 }}>
+                    200 zł
+                  </div>
+                  <div style={{ fontSize: "0.82rem", color: "#7a90b0", marginBottom: 20, marginTop: 4, fontWeight: 300 }}>
+                    za każdą rozpoczętą godzinę / od strony
+                  </div>
+                  <div style={{ width: "100%", height: 1, background: "#e8eef8", marginBottom: 20 }} />
+                  <p style={{ fontSize: "0.85rem", color: "#5a6e8a", lineHeight: 1.7, fontWeight: 300 }}>
+                    W mediacjach prowadzonych zdalnie (e-mail, telefon, MS Teams, Zoom) możliwe jest indywidualne ustalenie stawki ryczałtowej za całość postępowania.
+                  </p>
+                </div>
+
+                <div className="price-card">
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
+                    Sprawy majątkowe
+                  </div>
+                  <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 16, fontWeight: 300, lineHeight: 1.5 }}>
+                    Stawka od każdej ze stron za jedno posiedzenie mediacyjne, w zależności od wartości przedmiotu sporu.
+                  </div>
+                  <div>
+                    {[
+                      ["do 10 000 zł", "200 zł"],
+                      ["10 001 – 50 000 zł", "400 zł"],
+                      ["50 001 – 100 000 zł", "600 zł"],
+                      ["100 001 – 200 000 zł", "1 000 zł"],
+                      ["200 001 – 2 000 000 zł", "1 500 zł + 2% nadwyżki"],
+                      ["powyżej 2 000 000 zł", "indywidualnie"],
+                    ].map(([range, price], i) => (
+                      <div key={i} style={{
+                        display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                        gap: 16, padding: "10px 0",
+                        borderTop: i === 0 ? "none" : "1px solid #e8eef8",
+                        fontSize: "0.85rem", fontWeight: 300,
+                      }}>
+                        <span style={{ color: "#5a6e8a" }}>{range}</span>
+                        <span style={{ color: "#0d1e3d", fontWeight: 500, textAlign: "right" }}>{price}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ fontSize: "0.75rem", color: "#9aaac0", lineHeight: 1.6, fontWeight: 300, marginTop: 14, fontStyle: "italic" }}>
+                    W przedziale 200 001 – 2 000 000 zł maksymalna opłata wynosi 10 000 zł od strony.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 20, textAlign: "center" }}>
+                  Opłaty dodatkowe
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+                  {[
+                    { label: "Dojazd poza siedzibę mediatora", price: "1,15 zł / km" },
+                    { label: "Najem pomieszczenia", price: "110 zł / posiedzenie" },
+                    { label: "Korespondencja", price: "do 50 zł" },
+                  ].map((item, i) => (
+                    <div key={i} style={{ padding: "20px 24px", border: "1px solid #e0e8f5", textAlign: "center" }}>
+                      <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 8, fontWeight: 300, lineHeight: 1.4 }}>
+                        {item.label}
+                      </div>
+                      <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.2rem", color: "#0d1e3d", fontWeight: 600 }}>
+                        {item.price}
+                      </div>
                     </div>
-                  )}
-                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: p.featured ? "#7aaae0" : "#2a5caa", marginBottom: 12 }}>{p.title}</div>
-                  <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: (p.price === "Wycena indywidualna" || p.price === "Zgodnie z przepisami") ? "1.7rem" : "2.4rem", fontWeight: 600, color: p.featured ? "#fff" : "#0d1e3d", lineHeight: 1.2 }}>{p.price}</div>
-                  <div style={{ fontSize: "0.8rem", color: p.featured ? "#8aaccc" : "#9aaac0", marginBottom: 28, marginTop: 4 }}>{p.unit}</div>
-                  <div style={{ width: "100%", height: 1, background: p.featured ? "rgba(255,255,255,0.1)" : "#e8eef8", marginBottom: 24 }} />
-                  <ul style={{ listStyle: "none", marginBottom: 32 }}>
-                    {p.features.map((f, j) => (
-                      <li key={j} style={{ fontSize: "0.88rem", color: p.featured ? "#b8d0ea" : "#5a6e8a", marginBottom: 10, display: "flex", gap: 10, alignItems: "flex-start", fontWeight: 300 }}>
-                        <span style={{ color: p.featured ? "#7aaae0" : "#2a5caa", marginTop: 2 }}>—</span>
-                        {f}
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          )}
+
+          {activeTab === "sadowe" && (
+            <FadeIn>
+              <p style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 48px", fontSize: "0.95rem", lineHeight: 1.8, color: "#4a5e80", fontWeight: 300 }}>
+                Cennik mediacji ze skierowania sądu jest zgodny z Rozporządzeniem Ministra Sprawiedliwości z dnia 12 lutego 2026 r. w sprawie wysokości wynagrodzenia i podlegających zwrotowi wydatków mediatora w postępowaniu cywilnym. Mediator pobiera należności bezpośrednio od stron przed rozpoczęciem mediacji (art. 183<sup style={{ fontSize: "0.7em" }}>5</sup> KPC).
+              </p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24, marginBottom: 40 }}>
+                <div className="price-card">
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
+                    Sprawy niemajątkowe
+                  </div>
+                  <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 20, fontWeight: 300, lineHeight: 1.5 }}>
+                    Wynagrodzenie do podziału między stronami. Dotyczy także spraw, w których nie można określić wartości przedmiotu sporu.
+                  </div>
+                  {[
+                    ["Pierwsze posiedzenie", "300 zł"],
+                    ["Każde kolejne posiedzenie", "200 zł"],
+                    ["Łącznie maksymalnie", "900 zł"],
+                  ].map(([label, price], i) => (
+                    <div key={i} style={{
+                      display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                      padding: "12px 0",
+                      borderTop: i === 0 ? "none" : "1px solid #e8eef8",
+                      fontSize: "0.88rem", fontWeight: 300,
+                    }}>
+                      <span style={{ color: "#5a6e8a" }}>{label}</span>
+                      <span style={{ color: "#0d1e3d", fontWeight: 500 }}>{price}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="price-card">
+                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
+                    Sprawy majątkowe
+                  </div>
+                  <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 24, fontWeight: 300, lineHeight: 1.5 }}>
+                    Wynagrodzenie do podziału między stronami, zaokrąglane w górę do pełnego złotego.
+                  </div>
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: "0.75rem", color: "#7a90b0", marginBottom: 6, letterSpacing: "0.04em" }}>
+                      Wartość przedmiotu sporu do 200 000 zł
+                    </div>
+                    <div style={{ fontSize: "0.95rem", color: "#0d1e3d", fontWeight: 500, lineHeight: 1.5 }}>
+                      2% wartości <span style={{ color: "#7a90b0", fontWeight: 300 }}>(min. 300 zł, maks. 4 000 zł)</span>
+                    </div>
+                  </div>
+                  <div style={{ width: "100%", height: 1, background: "#e8eef8", marginBottom: 20 }} />
+                  <div>
+                    <div style={{ fontSize: "0.75rem", color: "#7a90b0", marginBottom: 6, letterSpacing: "0.04em" }}>
+                      Wartość przedmiotu sporu powyżej 200 000 zł
+                    </div>
+                    <div style={{ fontSize: "0.95rem", color: "#0d1e3d", fontWeight: 500, lineHeight: 1.5 }}>
+                      4 000 zł + 1% nadwyżki <span style={{ color: "#7a90b0", fontWeight: 300 }}>(maks. 8 000 zł)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 48 }}>
+                <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 20, textAlign: "center" }}>
+                  Zwrot wydatków mediatora
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+                  {[
+                    { label: "Dojazd (mediacja poza Rypinem)", price: "wg przepisów o podróżach służbowych" },
+                    { label: "Najem pomieszczenia", price: "do 110 zł / posiedzenie" },
+                    { label: "Korespondencja", price: "do 50 zł" },
+                    { label: "Nieprzystąpienie stron do mediacji", price: "do 110 zł" },
+                  ].map((item, i) => (
+                    <div key={i} style={{ padding: "20px 22px", border: "1px solid #e0e8f5" }}>
+                      <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 8, fontWeight: 300, lineHeight: 1.4 }}>
+                        {item.label}
+                      </div>
+                      <div style={{ fontSize: "0.88rem", color: "#0d1e3d", fontWeight: 500, lineHeight: 1.4 }}>
+                        {item.price}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+                <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
+                  <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
+                    Czas trwania posiedzeń
+                  </h4>
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+                    {[
+                      "Spotkanie indywidualne — do 1 godz.",
+                      "Pierwsze spotkanie wspólne — do 1,5 godz.",
+                      "Kolejne spotkania wspólne — do 1 godz.",
+                      "Każda kolejna rozpoczęta godzina to odrębne posiedzenie.",
+                    ].map((p, i) => (
+                      <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "0.83rem", color: "#5a6e8a", lineHeight: 1.6, fontWeight: 300 }}>
+                        <span style={{ color: "#2a5caa", marginTop: 1, flexShrink: 0 }}>—</span>
+                        {p}
                       </li>
                     ))}
                   </ul>
-                  <a href="#kontakt" onClick={e => scrollToSection(e, "#kontakt")} style={{
-                    display: "block", textAlign: "center",
-                    padding: "12px 24px",
-                    background: p.featured ? "#2a5caa" : "transparent",
-                    border: `1.5px solid ${p.featured ? "#2a5caa" : "#1a2a4a"}`,
-                    color: p.featured ? "#fff" : "#1a2a4a",
-                    fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase",
-                    transition: "all 0.3s",
-                  }}>{p.cta}</a>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+
+                <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
+                  <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
+                    Zwolnienie z kosztów
+                  </h4>
+                  <p style={{ fontSize: "0.83rem", color: "#5a6e8a", lineHeight: 1.7, fontWeight: 300 }}>
+                    Koszty mediacji zaliczają się do kosztów postępowania sądowego. W uzasadnionych przypadkach sąd może zwolnić strony z całości lub części tych kosztów. Wymaga to złożenia w sądzie wniosku wraz z oświadczeniem o stanie rodzinnym, majątku, dochodach i źródłach utrzymania.
+                  </p>
+                </div>
+
+                <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
+                  <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
+                    Korzyści finansowe z ugody
+                  </h4>
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
+                    {[
+                      ["Zwrot całej opłaty od pozwu", "ugoda przed rozpoczęciem rozprawy w I instancji"],
+                      ["Zwrot 3/4 opłaty", "ugoda po rozpoczęciu rozprawy"],
+                      ["Zwrot 1/2 opłaty", "ugoda w II instancji"],
+                    ].map(([title, sub], i) => (
+                      <li key={i}>
+                        <div style={{ fontSize: "0.83rem", color: "#0d1e3d", fontWeight: 500, marginBottom: 2 }}>{title}</div>
+                        <div style={{ fontSize: "0.78rem", color: "#7a90b0", fontWeight: 300, lineHeight: 1.5 }}>{sub}</div>
+                      </li>
+                    ))}
+                  </ul>
+                  <p style={{ fontSize: "0.72rem", color: "#9aaac0", lineHeight: 1.5, fontWeight: 300, marginTop: 14, fontStyle: "italic" }}>
+                    Każdorazowo warto zweryfikować aktualne zasady zwrotu opłat.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          )}
+
+          <FadeIn delay={0.15}>
+            <div style={{ textAlign: "center", marginTop: 64 }}>
+              <p style={{ fontSize: "0.9rem", color: "#7a90b0", fontWeight: 300, marginBottom: 20 }}>
+                Masz pytania dotyczące cennika lub konkretnej sprawy?
+              </p>
+              <a href="#kontakt" onClick={e => scrollToSection(e, "#kontakt")} className="btn-primary">
+                Skontaktuj się
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
-
 
       {/* OPINIE */}
       <section style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
@@ -732,6 +959,7 @@ export default function App() {
           </div>
         </div>
       </section>
+
       {/* CYTAT */}
       <section style={{ background: "#0d1e3d", padding: "80px clamp(24px, 5vw, 80px)", textAlign: "center" }}>
         <FadeIn>
@@ -781,7 +1009,6 @@ export default function App() {
               ))}
             </div>
           </FadeIn>
-
           <FadeIn delay={0.2}>
             {sent ? (
               <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", textAlign: "center", gap: 16 }}>
