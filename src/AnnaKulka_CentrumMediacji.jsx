@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+ 
 const NAV_LINKS = [
   { label: "O mnie", href: "#o-mnie" },
   { label: "Mediacja", href: "#mediacja" },
@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: "Cennik", href: "#cennik" },
   { label: "Kontakt", href: "#kontakt" },
 ];
-
+ 
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -18,7 +18,7 @@ function useInView(threshold = 0.15) {
   }, []);
   return [ref, inView];
 }
-
+ 
 function FadeIn({ children, delay = 0, className = "" }) {
   const [ref, inView] = useInView();
   return (
@@ -31,7 +31,7 @@ function FadeIn({ children, delay = 0, className = "" }) {
     </div>
   );
 }
-
+ 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,13 +40,13 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState(false);
   const [activeTab, setActiveTab] = useState("umowne");
-
+ 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
-
+ 
   const scrollToSection = (e, href) => {
     e.preventDefault();
     const id = href.replace("#", "");
@@ -69,7 +69,7 @@ export default function App() {
     }
     setMenuOpen(false);
   };
-
+ 
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.message) return;
     setSending(true);
@@ -95,7 +95,7 @@ export default function App() {
       setSending(false);
     }
   };
-
+ 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", color: "#1a2a4a", background: "#fff" }}>
       <style>{`
@@ -104,7 +104,7 @@ export default function App() {
         html { scroll-behavior: auto; }
         ::selection { background: #c8d8f0; color: #0d1e3d; }
         a { text-decoration: none; color: inherit; }
-
+ 
         .nav-link {
           font-size: 0.85rem;
           letter-spacing: 0.12em;
@@ -125,7 +125,7 @@ export default function App() {
         }
         .nav-link:hover::after { width: 100%; }
         .nav-link:hover { color: #2a5caa; }
-
+ 
         .btn-primary {
           display: inline-block;
           padding: 14px 36px;
@@ -140,7 +140,7 @@ export default function App() {
           transition: background 0.3s, transform 0.2s;
         }
         .btn-primary:hover { background: #2a5caa; transform: translateY(-1px); }
-
+ 
         .btn-outline {
           display: inline-block;
           padding: 13px 36px;
@@ -155,7 +155,7 @@ export default function App() {
           transition: background 0.3s, color 0.3s;
         }
         .btn-outline:hover { background: #1a2a4a; color: #fff; }
-
+ 
         .section-label {
           font-family: 'DM Sans', sans-serif;
           font-size: 0.75rem;
@@ -172,7 +172,7 @@ export default function App() {
           line-height: 1.2;
           color: #0d1e3d;
         }
-
+ 
         .service-card {
           border: 1px solid #e0e8f5;
           padding: 36px 32px;
@@ -185,7 +185,7 @@ export default function App() {
           transform: translateY(-4px);
           box-shadow: 0 16px 48px rgba(42,92,170,0.1);
         }
-
+ 
         .price-card {
           border: 1px solid #e0e8f5;
           padding: 40px 36px;
@@ -202,7 +202,7 @@ export default function App() {
           border-color: #2a5caa;
           box-shadow: 0 16px 48px rgba(42,92,170,0.1);
         }
-
+ 
         .input-field {
           width: 100%;
           padding: 14px 16px;
@@ -215,14 +215,14 @@ export default function App() {
           transition: border-color 0.3s;
         }
         .input-field:focus { border-color: #2a5caa; background: #fff; }
-
+ 
         .divider-line {
           width: 48px;
           height: 2px;
           background: #2a5caa;
           margin-bottom: 24px;
         }
-
+ 
         /* ── RESPONSIVE GRIDS ── */
         .grid-two-col {
           display: grid;
@@ -244,7 +244,7 @@ export default function App() {
           display: flex;
           justify-content: center;
         }
-
+ 
         @media (max-width: 768px) {
           .grid-two-col {
             grid-template-columns: 1fr;
@@ -277,13 +277,13 @@ export default function App() {
           .mobile-toggle { display: none !important; }
           .mobile-menu-overlay { display: none !important; }
         }
-
+ 
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(28px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
-
+ 
       {/* NAV */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
@@ -308,7 +308,7 @@ export default function App() {
           <div style={{ width: 24, height: 2, background: "#1a2a4a", transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "none" }} />
         </button>
       </nav>
-
+ 
       {/* MOBILE MENU */}
       <div className="mobile-menu-overlay" style={{
         position: "fixed", inset: 0, zIndex: 99,
@@ -327,7 +327,7 @@ export default function App() {
           <a href="#kontakt" className="btn-primary" style={{ textAlign: "center" }} onClick={e => scrollToSection(e, "#kontakt")}>Umów spotkanie</a>
         </div>
       </div>
-
+ 
       {/* HERO */}
       <section className="hero-section" style={{
         minHeight: "100vh",
@@ -339,7 +339,7 @@ export default function App() {
         <div style={{ position: "absolute", top: -120, right: -120, width: 480, height: 480, borderRadius: "50%", border: "1px solid #c8d8f0", opacity: 0.5 }} />
         <div style={{ position: "absolute", top: -60, right: -60, width: 300, height: 300, borderRadius: "50%", border: "1px solid #aac4e8", opacity: 0.4 }} />
         <div style={{ position: "absolute", bottom: 80, left: -80, width: 280, height: 280, borderRadius: "50%", background: "rgba(42,92,170,0.04)" }} />
-
+ 
         <div className="grid-two-col" style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
           <div style={{ animation: "fadeUp 1s ease 0.1s both" }}>
             <span className="section-label">Mediator Sądowy</span>
@@ -388,7 +388,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
+ 
       {/* O MNIE */}
       <section id="o-mnie" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div className="grid-two-col" style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -429,7 +429,7 @@ export default function App() {
           </FadeIn>
         </div>
       </section>
-
+ 
       {/* MEDIACJA */}
       <section id="mediacja" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -446,7 +446,7 @@ export default function App() {
               </p>
             </div>
           </FadeIn>
-
+ 
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -473,7 +473,7 @@ export default function App() {
               </div>
             </div>
           </FadeIn>
-
+ 
           <div className="grid-two-col" style={{ marginBottom: 80 }}>
             <FadeIn>
               <span className="section-label">Rola mediatora</span>
@@ -510,7 +510,7 @@ export default function App() {
               </div>
             </FadeIn>
           </div>
-
+ 
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -546,7 +546,7 @@ export default function App() {
               </div>
             </div>
           </FadeIn>
-
+ 
           <FadeIn>
             <div style={{ marginBottom: 80 }}>
               <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -581,7 +581,7 @@ export default function App() {
               </div>
             </div>
           </FadeIn>
-
+ 
           <FadeIn>
             <div style={{ textAlign: "center", background: "#f0f5ff", padding: "48px 40px", border: "1px solid #e0e8f5" }}>
               <h3 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", color: "#0d1e3d", marginBottom: 16 }}>Masz pytania?</h3>
@@ -593,7 +593,7 @@ export default function App() {
           </FadeIn>
         </div>
       </section>
-
+ 
       {/* USŁUGI */}
       <section id="uslugi" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -631,7 +631,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
+ 
       {/* CENNIK */}
       <section id="cennik" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -645,7 +645,7 @@ export default function App() {
               </p>
             </div>
           </FadeIn>
-
+ 
           <FadeIn delay={0.1}>
             <div style={{
               display: "flex", justifyContent: "center", gap: 0,
@@ -676,13 +676,13 @@ export default function App() {
               ))}
             </div>
           </FadeIn>
-
+ 
           {activeTab === "umowne" && (
             <FadeIn>
               <p style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px", fontSize: "0.95rem", lineHeight: 1.8, color: "#4a5e80", fontWeight: 300 }}>
                 Koszty mediacji umownych ustalane są w zależności od rodzaju i stopnia skomplikowania sprawy, liczby spotkań oraz uczestników. Co do zasady strony ponoszą koszty po połowie — możliwe jest również uregulowanie ich w całości przez jedną ze stron.
               </p>
-
+ 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24, marginBottom: 32 }}>
                 {/* Bezpłatna konsultacja telefoniczna */}
                 <div style={{
@@ -721,7 +721,7 @@ export default function App() {
                     Umów bezpłatną konsultację
                   </a>
                 </div>
-
+ 
                 {/* Konsultacja wstępna - płatna */}
                 <div className="price-card">
                   <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
@@ -748,14 +748,14 @@ export default function App() {
                   </ul>
                 </div>
               </div>
-
+ 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24, marginBottom: 40 }}>
                 <div className="price-card">
                   <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
                     Sprawy niemajątkowe
                   </div>
                   <div style={{ fontSize: "0.78rem", color: "#7a90b0", marginBottom: 20, fontWeight: 300, lineHeight: 1.5 }}>
-                    Stawka od każdej ze stron za rozpoczęte spotkanie mediacyjne.
+                    Stawka za rozpoczęte spotkanie mediacyjne.
                   </div>
                   {[
                     ["Pierwsze spotkanie", "300 zł"],
@@ -771,11 +771,8 @@ export default function App() {
                       <span style={{ color: "#0d1e3d", fontWeight: 500 }}>{price}</span>
                     </div>
                   ))}
-                  <p style={{ fontSize: "0.75rem", color: "#9aaac0", lineHeight: 1.6, fontWeight: 300, marginTop: 14, fontStyle: "italic" }}>
-                    W mediacjach prowadzonych zdalnie (e-mail, telefon, MS Teams, Zoom) możliwe jest indywidualne ustalenie stawki ryczałtowej za całość postępowania.
-                  </p>
                 </div>
-
+ 
                 <div className="price-card">
                   <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
                     Sprawy majątkowe
@@ -808,7 +805,7 @@ export default function App() {
                   </p>
                 </div>
               </div>
-
+ 
               <div>
                 <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 20, textAlign: "center" }}>
                   Opłaty dodatkowe
@@ -832,13 +829,13 @@ export default function App() {
               </div>
             </FadeIn>
           )}
-
+ 
           {activeTab === "sadowe" && (
             <FadeIn>
               <p style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 48px", fontSize: "0.95rem", lineHeight: 1.8, color: "#4a5e80", fontWeight: 300 }}>
                 Cennik mediacji ze skierowania sądu jest zgodny z Rozporządzeniem Ministra Sprawiedliwości z dnia 12 lutego 2026 r. w sprawie wysokości wynagrodzenia i podlegających zwrotowi wydatków mediatora w postępowaniu cywilnym. Mediator pobiera należności bezpośrednio od stron przed rozpoczęciem mediacji (art. 183<sup style={{ fontSize: "0.7em" }}>5</sup> KPC).
               </p>
-
+ 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24, marginBottom: 40 }}>
                 <div className="price-card">
                   <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
@@ -863,7 +860,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-
+ 
                 <div className="price-card">
                   <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 12 }}>
                     Sprawy majątkowe
@@ -890,7 +887,7 @@ export default function App() {
                   </div>
                 </div>
               </div>
-
+ 
               <div style={{ marginBottom: 48 }}>
                 <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 20, textAlign: "center" }}>
                   Zwrot wydatków mediatora
@@ -913,7 +910,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
-
+ 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
                 <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
                   <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
@@ -933,7 +930,7 @@ export default function App() {
                     ))}
                   </ul>
                 </div>
-
+ 
                 <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
                   <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
                     Zwolnienie z kosztów
@@ -942,7 +939,7 @@ export default function App() {
                     Koszty mediacji zaliczają się do kosztów postępowania sądowego. W uzasadnionych przypadkach sąd może zwolnić strony z całości lub części tych kosztów. Wymaga to złożenia w sądzie wniosku wraz z oświadczeniem o stanie rodzinnym, majątku, dochodach i źródłach utrzymania.
                   </p>
                 </div>
-
+ 
                 <div style={{ background: "#f6f9ff", padding: "28px", border: "1px solid #e0e8f5" }}>
                   <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.25rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 16 }}>
                     Korzyści finansowe z ugody
@@ -966,7 +963,7 @@ export default function App() {
               </div>
             </FadeIn>
           )}
-
+ 
           <FadeIn delay={0.15}>
             <div style={{ textAlign: "center", marginTop: 64 }}>
               <p style={{ fontSize: "0.9rem", color: "#7a90b0", fontWeight: 300, marginBottom: 20 }}>
@@ -979,7 +976,7 @@ export default function App() {
           </FadeIn>
         </div>
       </section>
-
+ 
       {/* OPINIE */}
       <section style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1017,7 +1014,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
+ 
       {/* CYTAT */}
       <section style={{ background: "#0d1e3d", padding: "80px clamp(24px, 5vw, 80px)", textAlign: "center" }}>
         <FadeIn>
@@ -1031,7 +1028,7 @@ export default function App() {
           </div>
         </FadeIn>
       </section>
-
+ 
       {/* KONTAKT */}
       <section id="kontakt" className="section-padding" style={{ padding: "100px clamp(24px, 5vw, 80px)", background: "#f6f9ff" }}>
         <div className="grid-contact" style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1116,7 +1113,7 @@ export default function App() {
           </FadeIn>
         </div>
       </section>
-
+ 
       {/* FOOTER */}
       <footer style={{ background: "#0d1e3d", padding: "40px clamp(24px, 5vw, 80px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1rem", color: "#6888aa" }}>
