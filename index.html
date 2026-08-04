@@ -16,13 +16,33 @@
     <meta property="og:title" content="Anna Kulka – Centrum Mediacji | Dobre Mediacje Rypin" />
     <meta property="og:description" content="Mediator sądowy – Rypin i okolice. Mediacje rodzinne, cywilne, pracownicze. Pierwsza konsultacja bezpłatna." />
     <meta property="og:locale" content="pl_PL" />
-    <!-- Google Analytics -->
+    <!-- Google Analytics + Consent Mode v2 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L37B7SS38F"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Consent Mode v2 — default: wszystko denied do momentu zgody użytkownika
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+      });
+      // Odczyt wcześniejszej zgody z localStorage (jeśli użytkownik już wybrał)
+      try {
+        var saved = localStorage.getItem('cookieConsent');
+        if (saved) {
+          var c = JSON.parse(saved);
+          gtag('consent', 'update', {
+            'analytics_storage': c.analytics ? 'granted' : 'denied'
+          });
+        }
+      } catch (e) {}
       gtag('js', new Date());
-      gtag('config', 'G-L37B7SS38F');
+      gtag('config', 'G-L37B7SS38F', { 'anonymize_ip': true });
     </script>
     <!-- Dane strukturalne -->
     <script type="application/ld+json">
