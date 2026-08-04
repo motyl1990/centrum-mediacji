@@ -43,6 +43,7 @@ export default function App() {
   const [cookieBanner, setCookieBanner] = useState(false);
   const [cookieSettings, setCookieSettings] = useState(false);
   const [analyticsConsent, setAnalyticsConsent] = useState(false);
+  const [privacyPolicy, setPrivacyPolicy] = useState(false);
 
   useEffect(() => {
     try {
@@ -1164,6 +1165,15 @@ export default function App() {
         </div>
         <div style={{ fontSize: "0.75rem", color: "#3a5070", display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
           <span>Mediator wpisany na listę Ministra Sprawiedliwości</span>
+          <button onClick={() => setPrivacyPolicy(true)} style={{
+            background: "none", border: "none", cursor: "pointer",
+            color: "#4a6080", fontSize: "0.72rem", letterSpacing: "0.08em",
+            textTransform: "uppercase", padding: 0, transition: "color 0.3s",
+          }}
+            onMouseOver={e => e.target.style.color = "#7aaae0"}
+            onMouseOut={e => e.target.style.color = "#4a6080"}>
+            Polityka prywatności
+          </button>
           <button onClick={() => setCookieSettings(true)} style={{
             background: "none", border: "none", cursor: "pointer",
             color: "#4a6080", fontSize: "0.72rem", letterSpacing: "0.08em",
@@ -1335,6 +1345,208 @@ export default function App() {
                 onMouseOver={e => { e.target.style.background = "#2a5caa"; e.target.style.borderColor = "#2a5caa"; }}
                 onMouseOut={e => { e.target.style.background = "#1a2a4a"; e.target.style.borderColor = "#1a2a4a"; }}>
                 Zapisz wybór
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* PRIVACY POLICY MODAL */}
+      {privacyPolicy && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 1001,
+          background: "rgba(13,30,61,0.5)", backdropFilter: "blur(4px)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          padding: 20,
+        }} onClick={() => setPrivacyPolicy(false)}>
+          <div onClick={e => e.stopPropagation()} style={{
+            background: "#fff", maxWidth: 720, width: "100%",
+            padding: "40px clamp(24px, 4vw, 48px)",
+            maxHeight: "90vh", overflowY: "auto",
+            animation: "fadeUp 0.4s ease both",
+            position: "relative",
+          }}>
+            <button onClick={() => setPrivacyPolicy(false)} style={{
+              position: "absolute", top: 20, right: 20,
+              background: "none", border: "none", cursor: "pointer",
+              fontSize: "1.4rem", color: "#7a90b0", padding: 8, lineHeight: 1,
+              transition: "color 0.3s",
+            }}
+              onMouseOver={e => e.target.style.color = "#0d1e3d"}
+              onMouseOut={e => e.target.style.color = "#7a90b0"}>
+              ×
+            </button>
+
+            <div style={{ fontSize: "0.72rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#2a5caa", marginBottom: 8 }}>
+              Prywatność
+            </div>
+            <h3 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.9rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 8 }}>
+              Klauzula informacyjna RODO
+            </h3>
+            <p style={{ fontSize: "0.8rem", color: "#7a90b0", fontWeight: 300, marginBottom: 28 }}>
+              Informacja o przetwarzaniu danych osobowych zgodnie z art. 13 RODO
+            </p>
+
+            {[
+              {
+                title: "Administrator danych",
+                body: (
+                  <div style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300 }}>
+                    <div style={{ marginBottom: 6 }}><span style={{ color: "#0d1e3d", fontWeight: 500 }}>Administrator:</span> Gabinet Psychologiczny Anna Kulka Psycholog – Mediator</div>
+                    <div style={{ marginBottom: 6 }}><span style={{ color: "#0d1e3d", fontWeight: 500 }}>Adres:</span> ul. Warszawska 17, 87-500 Rypin</div>
+                    <div style={{ marginBottom: 6 }}><span style={{ color: "#0d1e3d", fontWeight: 500 }}>E-mail:</span> mediacje.ugoda@wp.pl</div>
+                    <div><span style={{ color: "#0d1e3d", fontWeight: 500 }}>Telefon:</span> +48 725 514 482</div>
+                  </div>
+                ),
+              },
+              {
+                title: "Cel i podstawy przetwarzania danych",
+                body: (
+                  <>
+                    <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300, marginBottom: 12 }}>
+                      Dane przetwarzane są w celu:
+                    </p>
+                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6, marginBottom: 12 }}>
+                      {[
+                        "prowadzenia postępowań mediacyjnych (umownych i sądowych)",
+                        "prowadzenia dokumentacji wymaganej przepisami prawa, w tym ustawą o mediacji",
+                        "umawiania i organizacji spotkań mediacyjnych",
+                        "kontaktu w sprawach dotyczących mediacji",
+                        "wystawiania rachunków i faktur",
+                        "realizacji obowiązków prawnych ciążących na administratorze",
+                      ].map((p, i) => (
+                        <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "0.85rem", color: "#5a6e8a", lineHeight: 1.65, fontWeight: 300 }}>
+                          <span style={{ color: "#2a5caa", flexShrink: 0, marginTop: 2 }}>—</span>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <p style={{ fontSize: "0.82rem", color: "#7a90b0", lineHeight: 1.7, fontWeight: 300, fontStyle: "italic" }}>
+                      Podstawą prawną przetwarzania jest art. 6 ust. 1 lit. b RODO (wykonanie umowy o mediację) oraz art. 6 ust. 1 lit. c RODO (obowiązek prawny). W zakresie danych szczególnych kategorii ujawnionych podczas mediacji podstawą jest art. 9 ust. 2 lit. f RODO (ustalenie, dochodzenie lub obrona roszczeń).
+                    </p>
+                  </>
+                ),
+              },
+              {
+                title: "Zakres przetwarzanych danych",
+                body: (
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+                    {[
+                      "imię i nazwisko",
+                      "numer telefonu",
+                      "adres e-mail",
+                      "adres zamieszkania",
+                      "informacje dotyczące sprawy przekazywane podczas mediacji",
+                    ].map((p, i) => (
+                      <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "0.85rem", color: "#5a6e8a", lineHeight: 1.65, fontWeight: 300 }}>
+                        <span style={{ color: "#2a5caa", flexShrink: 0, marginTop: 2 }}>—</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              },
+              {
+                title: "Odbiorcy danych",
+                body: (
+                  <>
+                    <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300, marginBottom: 10 }}>
+                      Dane mogą być udostępniane wyłącznie podmiotom uprawnionym na podstawie przepisów prawa (m.in. sądom w przypadku mediacji sądowych) oraz następującym dostawcom usług technicznych:
+                    </p>
+                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+                      {[
+                        ["Formspree Inc.", "obsługa formularza kontaktowego"],
+                        ["Google LLC (Google Analytics)", "anonimowa analiza ruchu na stronie — wyłącznie za Twoją zgodą"],
+                        ["Vercel Inc.", "hosting strony internetowej"],
+                      ].map(([name, desc], i) => (
+                        <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "0.85rem", color: "#5a6e8a", lineHeight: 1.65, fontWeight: 300 }}>
+                          <span style={{ color: "#2a5caa", flexShrink: 0, marginTop: 2 }}>—</span>
+                          <span><span style={{ color: "#0d1e3d", fontWeight: 500 }}>{name}</span> — {desc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ),
+              },
+              {
+                title: "Pliki cookies",
+                body: (
+                  <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300 }}>
+                    Strona korzysta z niezbędnych plików cookies koniecznych do jej prawidłowego działania oraz — wyłącznie za Twoją wyraźną zgodą — z analitycznych plików cookies Google Analytics. Zgodę możesz w każdej chwili wycofać, klikając „Ustawienia cookies" w stopce strony. Więcej informacji o Google Analytics: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2a5caa", textDecoration: "underline" }}>policies.google.com/privacy</a>.
+                  </p>
+                ),
+              },
+              {
+                title: "Dobrowolność podania danych",
+                body: (
+                  <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300 }}>
+                    Podanie danych jest dobrowolne, jednak niezbędne do przeprowadzenia mediacji, prowadzenia dokumentacji oraz kontaktu w sprawie.
+                  </p>
+                ),
+              },
+              {
+                title: "Okres przechowywania",
+                body: (
+                  <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300 }}>
+                    Dane przechowywane są przez okres wymagany przepisami prawa lub do czasu przedawnienia roszczeń związanych z prowadzoną mediacją. Dane pochodzące z formularza kontaktowego przechowywane są do momentu wygaśnięcia celu kontaktu lub cofnięcia zgody.
+                  </p>
+                ),
+              },
+              {
+                title: "Prawa osoby, której dane dotyczą",
+                body: (
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
+                    {[
+                      "dostęp do swoich danych",
+                      "sprostowanie danych",
+                      "ograniczenie przetwarzania",
+                      "usunięcie danych (w przypadkach przewidzianych prawem)",
+                      "sprzeciw wobec przetwarzania",
+                      "przenoszenie danych",
+                      "cofnięcie zgody w dowolnym momencie (bez wpływu na wcześniejsze przetwarzanie)",
+                      "wniesienie skargi do Prezesa Urzędu Ochrony Danych Osobowych",
+                    ].map((p, i) => (
+                      <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "0.85rem", color: "#5a6e8a", lineHeight: 1.65, fontWeight: 300 }}>
+                        <span style={{ color: "#2a5caa", flexShrink: 0, marginTop: 2 }}>—</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              },
+              {
+                title: "Poufność mediacji",
+                body: (
+                  <p style={{ fontSize: "0.88rem", color: "#5a6e8a", lineHeight: 1.75, fontWeight: 300 }}>
+                    Wszystkie informacje ujawnione podczas mediacji objęte są tajemnicą mediatora zgodnie z ustawą z dnia 17 listopada 1964 r. Kodeks postępowania cywilnego (art. 183<sup style={{ fontSize: "0.7em" }}>4</sup> KPC). Poufność stanowi jedną z podstawowych zasad prowadzonej mediacji.
+                  </p>
+                ),
+              },
+            ].map((section, i, arr) => (
+              <div key={i} style={{
+                paddingBottom: 24, marginBottom: 24,
+                borderBottom: i < arr.length - 1 ? "1px solid #e8eef8" : "none",
+              }}>
+                <h4 style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.15rem", fontWeight: 600, color: "#0d1e3d", marginBottom: 12 }}>
+                  {section.title}
+                </h4>
+                {section.body}
+              </div>
+            ))}
+
+            <div style={{ marginTop: 8, display: "flex", justifyContent: "flex-end" }}>
+              <button onClick={() => setPrivacyPolicy(false)} style={{
+                padding: "12px 32px",
+                background: "#1a2a4a",
+                border: "1.5px solid #1a2a4a",
+                color: "#fff",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase",
+                cursor: "pointer", transition: "all 0.3s",
+              }}
+                onMouseOver={e => { e.target.style.background = "#2a5caa"; e.target.style.borderColor = "#2a5caa"; }}
+                onMouseOut={e => { e.target.style.background = "#1a2a4a"; e.target.style.borderColor = "#1a2a4a"; }}>
+                Zamknij
               </button>
             </div>
           </div>
