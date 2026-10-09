@@ -44,25 +44,6 @@ export default function App() {
   const [cookieSettings, setCookieSettings] = useState(false);
   const [analyticsConsent, setAnalyticsConsent] = useState(false);
   const [privacyPolicy, setPrivacyPolicy] = useState(false);
-  const [locationPopup, setLocationPopup] = useState(false);
-
-  useEffect(() => {
-    try {
-      const seen = sessionStorage.getItem("locationPopupSeen");
-      if (!seen) {
-        setLocationPopup(true);
-      }
-    } catch (e) {
-      setLocationPopup(true);
-    }
-  }, []);
-
-  const closeLocationPopup = () => {
-    try {
-      sessionStorage.setItem("locationPopupSeen", "1");
-    } catch (e) {}
-    setLocationPopup(false);
-  };
 
   useEffect(() => {
     try {
@@ -1572,45 +1553,6 @@ export default function App() {
         </div>
       )}
 
-      {/* LOCATION CHANGE POPUP */}
-      {locationPopup && (
-        <div style={{
-          position: "fixed", inset: 0, zIndex: 1100,
-          background: "rgba(13,30,61,0.7)", backdropFilter: "blur(6px)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          padding: 20,
-          animation: "fadeUp 0.4s ease both",
-        }} onClick={closeLocationPopup}>
-          <div onClick={e => e.stopPropagation()} style={{
-            position: "relative",
-            maxWidth: 480, width: "100%",
-            maxHeight: "92vh",
-            display: "flex", flexDirection: "column",
-          }}>
-            <button onClick={closeLocationPopup} aria-label="Zamknij" style={{
-              position: "absolute", top: -14, right: -14, zIndex: 2,
-              width: 36, height: 36, borderRadius: "50%",
-              background: "#fff", border: "1.5px solid #0d1e3d",
-              color: "#0d1e3d", cursor: "pointer",
-              fontSize: "1.2rem", lineHeight: 1,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-              transition: "all 0.3s",
-            }}
-              onMouseOver={e => { e.currentTarget.style.background = "#0d1e3d"; e.currentTarget.style.color = "#fff"; }}
-              onMouseOut={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#0d1e3d"; }}>
-              ×
-            </button>
-            <a href="#kontakt" onClick={e => { closeLocationPopup(); scrollToSection(e, "#kontakt"); }} style={{
-              display: "block", cursor: "pointer",
-              boxShadow: "0 24px 64px rgba(0,0,0,0.35)",
-            }}>
-              <img src="/banner-location2.jpg" alt="Zmiana lokalizacji — nowy adres: ul. Polna 5, Rypin"
-                style={{ display: "block", width: "100%", height: "auto", maxHeight: "92vh", objectFit: "contain" }} />
-            </a>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
